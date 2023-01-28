@@ -31,7 +31,7 @@ export default App;
 
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-
+import CurrentLocation from './Map';
 
 const mapStyles = {
   width: '100%',
@@ -59,7 +59,7 @@ export class MapContainer extends Component {
       });
     }
   };
-  render() {
+  /*render() {
     return (
         <Map
             google={this.props.google}
@@ -87,7 +87,26 @@ export class MapContainer extends Component {
           </InfoWindow>
         </Map>
     );
-  }
+  }*/
+    render() {
+        return (
+            <CurrentLocation
+                centerAroundCurrentLocation
+                google={this.props.google}
+            >
+                <Marker onClick={this.onMarkerClick} name={'Current Location'} />
+                <InfoWindow
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                    onClose={this.onClose}
+                >
+                    <div>
+                        <h4>{this.state.selectedPlace.name}</h4>
+                    </div>
+                </InfoWindow>
+            </CurrentLocation>
+        );
+    }
 }
 
 export default GoogleApiWrapper({
