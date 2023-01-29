@@ -66,7 +66,7 @@ export class MapContainer extends Component {
                 centerAroundCurrentLocation
                 google={this.props.google}
             >
-                <Marker onClick={this.onMarkerClick} name={'Current Location'} />
+                <Marker onClick={this.onMarkerClick} name={'Environmentally Friendly!'} />
                 <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}
