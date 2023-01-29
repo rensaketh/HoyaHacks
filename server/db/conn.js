@@ -13,8 +13,13 @@ module.exports = {
             // Verify we got a good "db" object
             if (db)
             {
-                _db = db.db("employees");
+                _db = db.db("ReactApp");
+                console.log(db.collection.find( { field: { $size: 1 } } ));
+                //console.log(_db.admin());
+                console.log(_db.collection("sample_airbnb").items.length);
+                console.log(_db.collections());
                 console.log("Successfully connected to MongoDB.");
+
             }
             return callback(err);
         });
